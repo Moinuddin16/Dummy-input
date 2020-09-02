@@ -52,7 +52,23 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
             }
             else if(type == "text")
             {
-                allInputs[index]["value"] = 'Text';
+                var placeHolder = allInputs[index]["placeholder"];
+                if(/phone/i.test(placeHolder)){
+                    allInputs[index]["value"] = '01670913096';    
+                }
+                else if(/name/i.test(placeHolder))
+                {
+                    allInputs[index]["value"] = 'Moin Uddin';    
+                }
+                else if(/email/i.test(placeHolder))
+                {
+                    allInputs[index]["value"] = 'anik200019@gmail.com';    
+                }
+                else
+                {
+                    allInputs[index]["value"] = 'Text';
+                }
+                
             }
             else if(type == "time")
             {
@@ -74,9 +90,12 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
             {
                 allInputs[index]["value"] = 'Reset';
             }
-            else if(type == "reset")
+            else if(type == "textarea")
             {
-                allInputs[index]["value"] = 'Reset';
+                // var texarea = allInputs[index].next().find('textarea').eq(0);
+                var texarea = $('textarea').next().find('textarea');
+                console.log(texarea);
+                allInputs[index]["value"] = 'textarea';
             }
             else if(type == "select-one")
             {
@@ -90,7 +109,7 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
             else if(type == "select-multiple")
             {
                 var options = allInputs[index];
-                console.log(options);
+                // console.log(options);
                 $.each(options,function(oindex,ovalue) {  
                     if(oindex!=0)
                     ovalue["selected"] = 'true';

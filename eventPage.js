@@ -1,4 +1,10 @@
-
+chrome.browserAction.onClicked.addListener(function(clickData){
+   
+        chrome.tabs.query({active: true,currentWindow:true},function(tabs){
+            chrome.tabs.sendMessage(tabs[0].id,{name: "body"});
+        });
+   
+});
 var menuItem = {
     "id" : "fake_filler",
     "title" : "Fake Filler",
@@ -13,5 +19,5 @@ chrome.contextMenus.create(menuItem);
                 chrome.tabs.sendMessage(tabs[0].id,{name: "body"});
         });
     }
-   
+    
 });

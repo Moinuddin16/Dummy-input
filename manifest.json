@@ -10,7 +10,8 @@
     },
     "permissions" : [ 
         "contextMenus",
-        "tabs"
+        "tabs",
+        "storage"
     ],
     "browser_action" : {
         "default_icon" : "icon_48.png"

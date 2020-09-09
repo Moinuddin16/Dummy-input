@@ -136,42 +136,58 @@ function setValue(value, search) {
 function porcessMultipleSelection(allSelection, type)
 
 {
-    //console.log(allSelection);
+
+
     let radioCollection = new Map()
 
     $.each(allSelection, function(index, val) {
 
-            if (val[type] != null || val[type] != "") {
-                currnetNode = radioCollection.has(val[type]);
-                if (currnetNode) {
+        // console.log(val);
 
-                    radioCollection.get(val[type]).push(val)
-                    var che2 = radioCollection.get(val[type]);
+        // if (val['checked']) {
+        //     val.prop("checked", false);
+        // }
+        if (val[type] != null || val[type] != "") {
+            currnetNode = radioCollection.has(val[type]);
+            if (currnetNode) {
 
-                } else {
-                    var nam = new Array();
-                    nam.push(val);
-                    radioCollection.set(val[type], nam);
-                }
+                radioCollection.get(val[type]).push(val)
+                var che2 = radioCollection.get(val[type]);
+
+            } else {
+                var nam = new Array();
+                nam.push(val);
+                radioCollection.set(val[type], nam);
             }
+        }
 
-        })
-        //    / console.log(radioCollection);
-        //console.log(radioCollection);
+    });
+
+
     for (let [key, val1] of radioCollection) {
-
         if (val1.length > 1) {
             var random = Math.floor(Math.random() * val1.length);
-            // console.log(val1);
             for (i = 0; i < random; i++) {
                 var random1 = Math.floor(Math.random() * val1.length);
-                // console.log(val1[random1]);
+                // var fill = val1[random1]['checked'];
+                // console.log("1 " + fill);
+                // if (val1[random1]['checked']) {
+                //     console.log("hello");
+                //     val1[random1]['checked'] = "false";
+                // } else {
                 val1[random1]['checked'] = "true";
-                //    / console.log(random1);
+
+                //    }
+
             }
         } else {
-            console.log(val1);
+            // if (val1['checked']) {
+            //     console.log("hello");
+            //     val1['checked'] = "false";
+            // } else {
             val1['checked'] = "true";
+
+            //  }
         }
 
 
@@ -179,7 +195,7 @@ function porcessMultipleSelection(allSelection, type)
 
 
 
-
+    radioCollection.clear();
 
     // value['checked']="true";
 }
@@ -220,8 +236,14 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
         chrome.storage.local.get(['flagPlaceholder', 'flagName', 'flagClassName', 'flagInputId', 'flagTitle', 'flagLabel'], function(flag) {
 
+            //fetch all radip and checkbox
             var allRadio = $(":radio");
             var allCheckbox = $(":checkbox");
+
+            //unchecked all off them 
+            allRadio.prop("checked", false);
+            allCheckbox.prop("checked", false);
+
             if (flag.flagName == 1) {
 
                 if (allCheckbox != null) {

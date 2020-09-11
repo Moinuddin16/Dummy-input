@@ -1,13 +1,3 @@
-//mapping type vs value
-chrome.storage.local.set({
-    'flagPlaceholder': 1,
-    'flagName': 1,
-    'flagClassName': 1,
-    'flagInputId': 1,
-    'flagTitle': 1,
-    'flagLabel': 1,
-    'flagArialLabel': 1
-});
 const typaHandelar = new Map(
     [
         ['date', function(value) { value['value'] = "2020-07-29" }],
@@ -37,33 +27,33 @@ const typaHandelar = new Map(
 function processText(value) {
 
     chrome.storage.local.get(['flagPlaceholder', 'flagName', 'flagClassName', 'flagInputId', 'flagTitle', 'flagLabel', 'flagArialLabel'], function(flag) {
-        if (flag.flagPlaceholder == 1) {
+        if (flag.flagPlaceholder == 'flagPlaceholder1') {
             var search = value["placeholder"];
             setValue(value, search);
         }
-        if (flag.flagName == 1) {
+        if (flag.flagName == 'flagName1') {
             var search = value["name"];
             setValue(value, search);
         }
-        if (flag.flagClassName == 1) {
+        if (flag.flagClassName == 'flagClassName1') {
             var search = value["className"];
             setValue(value, search);
         }
-        if (flag.flagInputId == 1) {
+        if (flag.flagInputId == 'flagInputId1') {
             var search = value["id"];
             setValue(value, search);
         }
-        if (flag.flagTitle == 1) {
+        if (flag.flagTitle == 'flagTitle1') {
             var search = value["title"];
             setValue(value, search);
 
         }
-        if (flag.flagArialLabel == 1) {
+        if (flag.flagArialLabel == 'flagArialLabel1') {
             var search = value["ariaLabel"];
             setValue(value, search);
 
         }
-        if (flag.flagLabel == 1) {
+        if (flag.flagLabel == 'flagLabel1') {
             var nextElementSibling = value["nextElementSibling"];
             var previousElementSibling = value["previousElementSibling"];
             setValue(value, nextElementSibling);
@@ -234,7 +224,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
         });
 
-        chrome.storage.local.get(['flagPlaceholder', 'flagName', 'flagClassName', 'flagInputId', 'flagTitle', 'flagLabel'], function(flag) {
+        chrome.storage.local.get(['flagPlaceholder', 'flagName', 'flagClassName', 'flagInputId', 'flagTitle', 'flagLabel', 'flagArialLabel'], function(flag) {
 
             //fetch all radip and checkbox
             var allRadio = $(":radio");
@@ -244,7 +234,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             allRadio.prop("checked", false);
             allCheckbox.prop("checked", false);
 
-            if (flag.flagName == 1) {
+            if (flag.flagName == 'flagName1') {
 
                 if (allCheckbox != null) {
                     porcessMultipleSelection(allCheckbox, "name");
@@ -254,7 +244,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                     porcessMultipleSelection(allRadio, "name");
                 }
             }
-            if (flag.flagClassName == 1) {
+            if (flag.flagClassName == 'flagClassName1') {
 
                 if (allCheckbox != null) {
                     porcessMultipleSelection(allCheckbox, "className");
@@ -264,7 +254,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                     porcessMultipleSelection(allRadio, "className");
                 }
             }
-            if (flag.flagInputId == 1) {
+            if (flag.flagInputId == 'flagInputId1') {
 
                 if (allCheckbox != null) {
                     porcessMultipleSelection(allCheckbox, "id");
@@ -274,7 +264,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                     porcessMultipleSelection(allRadio, "id");
                 }
             }
-            if (flag.flagArialLabel == 1) {
+            if (flag.flagArialLabel == 'flagArialLabel1') {
                 if (allCheckbox != null) {
                     porcessMultipleSelection(allCheckbox, "id");
                 }

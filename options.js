@@ -1,11 +1,11 @@
 chrome.storage.local.get(['flagPlaceholder', 'flagName', 'flagClassName', 'flagInputId', 'flagTitle', 'flagLabel', 'flagArialLabel'], function(flag) {
-    console.log("InputId = " + flag.flagInputId);
-    console.log("ClassName = " + flag.flagClassName);
-    console.log("Name = " + flag.flagName);
-    console.log("placeholder = " + flag.flagPlaceholder);
-    console.log("ArialLabel = " + flag.flagArialLabel);
-    console.log("Label = " + flag.flagLabel);
-    console.log("Title = " + flag.flagTitle);
+    // console.log("InputId = " + flag.flagInputId);
+    // console.log("ClassName = " + flag.flagClassName);
+    // console.log("Name = " + flag.flagName);
+    // console.log("placeholder = " + flag.flagPlaceholder);
+    // console.log("ArialLabel = " + flag.flagArialLabel);
+    // console.log("Label = " + flag.flagLabel);
+    // console.log("Title = " + flag.flagTitle);
 
     if (flag.flagPlaceholder == 'flagPlaceholder1') {
         $('#place').prop('checked', true);
@@ -49,6 +49,8 @@ chrome.storage.local.get(['flagPlaceholder', 'flagName', 'flagClassName', 'flagI
 
 $(function() {
 
+
+
     $('.save-settings').click(function() {
         var inputClass = $('#class').prop('checked');
         var inputid = $('#id').prop('checked');
@@ -58,13 +60,13 @@ $(function() {
         var inputLabel = $('#label').prop('checked');
         var inputTitle = $('#title').prop('checked');
 
-        console.log(inputid);
-        console.log(inputClass);
-        console.log(inputName);
-        console.log(inputPlaceholder);
-        console.log(inputAirllabel);
-        console.log(inputLabel);
-        console.log(inputTitle);
+        // console.log(inputid);
+        // console.log(inputClass);
+        // console.log(inputName);
+        // console.log(inputPlaceholder);
+        // console.log(inputAirllabel);
+        // console.log(inputLabel);
+        // console.log(inputTitle);
 
 
         if (inputClass) {
@@ -102,41 +104,5 @@ $(function() {
         } else {
             chrome.storage.local.set({ 'flagTitle': 'flagTitle0' });
         }
-        // if (inputClass) {
-        //     chrome.storage.local.set({ 'flagClassName': 'flagClassName0' });
-        // } else {
-        //     chrome.storage.local.set({ 'flagClassName': 'flagClassName1' });
-        // }
-        // if (inputid) {
-        //     chrome.storage.local.set({ 'flagInputId': 1 });
-        // } else {
-        //     chrome.storage.local.set({ 'flagInputId': 0 });
-        // }
-        // if (inputName) {
-        //     chrome.storage.local.set({ 'flagName': 1 });
-        // } else {
-        //     chrome.storage.local.set({ 'flagName': 0 });
-        // }
-        // if (inputAirllabel) {
-        //     chrome.storage.local.set({ 'flagArialLabel': 1 });
-        // } else {
-        //     chrome.storage.local.set({ 'flagArialLabel': 0 });
-        // }
-        // if (inputPlaceholder) {
-        //     chrome.storage.local.set({ 'flagPlaceholder': 1 });
-        // } else {
-        //     chrome.storage.local.set({ 'flagPlaceholder': 0 });
-        // }
-        // if (inputLabel) {
-        //     chrome.storage.local.set({ 'flagLabel': 1 });
-        // } else {
-        //     chrome.storage.local.set({ 'flagLabel': 0 });
-        // }
-        // if (inputTitle) {
-        //     chrome.storage.local.set({ 'flagTitle': 1 });
-        // } else {
-        //     chrome.storage.local.set({ 'flagTitle': 0 });
-        // }
-
     });
 });
